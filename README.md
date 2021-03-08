@@ -14,7 +14,17 @@ OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
   response: {
     status_string: 'OK',
     message: STRING,
-    token_key: STRING
+    data: {
+      user: {
+        user_id: STRING,
+        user_group_id: ARRAY,
+        nama: STRING,
+        gelar_depan: STRING,
+        gelar_belakang: STRING,
+        email: STRING
+      },
+      token_key: STRING
+    }
   }
 }
 ```
