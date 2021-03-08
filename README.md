@@ -1,6 +1,6 @@
 # Status Response
 ```text
-OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
+OK | BAD_REQUEST | NOT FOUND | UNAUTHORIZED | EXPIRED
 ```
 ---
 ## **POST Login**
@@ -18,10 +18,11 @@ OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
       user: {
         user_id: STRING,
         user_group_id: ARRAY,
-        nama: STRING,
-        gelar_depan: STRING,
-        gelar_belakang: STRING,
-        email: STRING
+        slug: STRING,
+        firstname: STRING,
+        lastname: STRING,
+        email: STRING,
+        image: URL,
       },
       token_key: STRING
     }
@@ -49,6 +50,7 @@ OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
     message: STRING
     data: [
       {
+        inventaris_id: STRING,
         nama_barang: STRING,
         harga: STRING,
         no_urut: STRING,
@@ -68,12 +70,13 @@ OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
     'Token-Key': STRING
   },
   params: {
-    no_urut: STRING
+    inventaris_id: STRING
   },
   response: {
     status_string: 'OK',
     message: STRING,
     data: {
+      inventaris_id: STRING,
       no_urut: STRING,
       nama_barang: STRING,
       harga: STRING,
@@ -104,8 +107,8 @@ OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
     'Token-Key': STRING
   },
   params: {
-    no_urut: MD5(no_urut)
-  }
+    inventaris_id: STRING
+  },
   body: {
     client_id: STRING,
     kondisi: STRING,
@@ -137,8 +140,8 @@ OK | BAD_REQUEST | EMPTY | UNAUTHORIZED | EXPIRED
     message: STRING,
     data: [
       {
-        text: STRING (nama_client),
-        value: STRING (client_id)
+        title: STRING (nama_client),
+        id: STRING (client_id)
       }
     ]
   }
